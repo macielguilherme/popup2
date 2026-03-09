@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>DocZ - Relações do Objeto</title>
+    <style>
+        /* ===== CSS ORIGINAL DO SISTEMA (ADAPTADO) ===== */
+        html, body {
+            margin: 0; padding: 0; border: 0;
+            background: #fafafa;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #595959;
+        }
+
+        /* Moldura do Modal */
+        .ui-dialog {
+            background: #585858;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            width: 95%;
+            max-width: 1150px;
+            margin: 20px auto;
+        }
+
+        .ui-dialog-titlebar {
+            background: url("https://docz.sosdocs.com.br/Docz/app/images/backgrounds/titleBg.png") repeat-x 0 0;
+            border-bottom: 1px solid #cdcdcd;
+            height: 36px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            border-radius: 3px 3px 0 0;
+        }
+
+        .ui-dialog-title { font-weight: bold; font-size: 12px; }
+
+        .ui-dialog-content { background-color: #fafafa; position: relative; min-height: 450px; border-radius: 0 0 3px 3px; }
+
+        /* Estilo das Abas conforme seu código */
+        .listaConteudoDiv {
+            width: 100%;
+            height: 37px;
+            background: url("https://docz.sosdocs.com.br/Docz/app/images/backgrounds/titleBg.png") repeat-x;
+            border-bottom: 1px solid #CDCDCD;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+        ul.tabs {
+            display: flex;
+            list-style: none;
+            white-space: nowrap;
+            margin: 0; padding: 0;
+        }
+
+        ul.tabs li {
+            height: 36px;
+            line-height: 38px;
+            border-right: 1px solid #cdcdcd;
+            font-size: 13px;
+        }
+
+        ul.tabs li a {
+            padding: 0 15px;
+            text-decoration: none;
+            color: #595959;
+            display: block;
+        }
+
+        html ul.tabs li.activeTab {
+            background-color: #f9f9f9;
+            height: 37px;
+            font-weight: bold;
+        }
+
+        html ul.tabs li.activeTab a { color: #3672a0; }
+
+        .clear { clear: both; }
+
+        /* ===== LAYOUT DE CONTEÚDO (GRID SEM ABREVIAÇÕES) ===== */
+        .tab-container { padding: 20px; }
+
+        .grid-header {
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr 140px;
+            padding: 0 15px 10px 15px;
+            font-size: 10px;
+            color: #999;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .item-row {
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 2fr 1.2fr 1.2fr 140px;
+            padding: 15px;
+            align-items: center;
+            transition: all 0.2s;
+        }
+
+        .item-row:hover {
+            border-color: #3672a0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        /* Colunas */
+        .col-info { display: flex; flex-direction: column; gap: 4px; }
+        
+        .doc-name { color: #3672a0; font-weight: bold; text-decoration: none; font-size: 13px; }
+        .label-micro { font-size: 9px; text-transform: uppercase; color: #aaa; font-weight: bold; }
+        .sub-text { color: #888; font-size: 11px; }
+        .data-text { color: #555; font-size: 11px; line-height: 1.4; }
+
+        /* Badges de Status Coloridos */
+        .st-badge {
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 2px;
+            display: inline-block;
+            border: 1px solid;
+            text-transform: uppercase;
+        }
+        .st-arquivado { background: #f0f0f0; color: #777; border-color: #ccc; }
+        .st-tratamento { background: #fff4e5; color: #d35400; border-color: #ffcc80; }
+
+        /* Contadores (Sem Abreviação) */
+        .count-pills { text-align: right; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
+        .pill {
+            background: #eef2f7;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #3672a0;
+            font-size: 10px;
+            min-width: 80px;
+            text-align: center;
+            border: 1px solid #dce4ed;
+        }
+        .pill.active { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
+
+        .footer-note {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #aaa;
+            font-style: italic;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ui-dialog">
+    <div class="ui-dialog-titlebar">
+        <span class="ui-dialog-title">Objeto: DC0014B200086772808</span>
+        <a href="javascript:void(0)" style="text-decoration:none; color:#595959; font-weight:bold;">✖</a>
+    </div>
+
+    <div class="ui-dialog-content">
+        <div class="listaConteudoDiv">
+            <ul class="tabs tableContent">
+                <li><a href="#">Detalhes</a></li>
+                <li><a href="#">Arquivos [213]</a></li>
+                <li><a href="#">Adicionar</a></li>
+                <li class="activeTab"><a href="#">Relações [3]</a></li>
+                <li><a href="#">Avaliações [1]</a></li>
+                <li><a href="#">Comentários</a></li>
+                <li><a href="#">Versões</a></li>
+                <li><a href="#">Relacionamentos</a></li>
+                <li><a href="#">Arquivamento</a></li>
+                <li><a href="#">Integrações</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+        <div class="tab-container">
+            
+            <div class="grid-header">
+                <span>Identificador / Mapa</span>
+                <span>Endereço de Localização</span>
+                <span>Status e Cliente</span>
+                <span style="text-align: right;">Quantitativos</span>
+            </div>
+
+            <div class="item-row">
+                <div class="col-info">
+                    <a href="#" class="doc-name">DC003049000911450S (Volume)</a>
+                    <span class="sub-text">Mapa Documental: Sem Classificação</span>
+                </div>
+                <div class="col-info">
+                    <span class="label-micro">Localização:</span>
+                    <span class="data-text">C28210103.11102302.01111550</span>
+                </div>
+                <div class="col-info">
+                    <div style="margin-bottom: 4px;"><span class="st-badge st-arquivado">ARQUIVADO</span></div>
+                    <span class="sub-text">Cliente: 27.202.820/0001-04</span>
+                </div>
+                <div class="count-pills">
+                    <span class="pill">Volume: 0</span>
+                    <span class="pill">Anexos: 0</span>
+                </div>
+            </div>
+
+            <div class="item-row">
+                <div class="col-info">
+                    <a href="#" class="doc-name">DC0014B62008542250S</a>
+                    <span class="sub-text">Mapa Documental: Sem Classificação</span>
+                </div>
+                <div class="col-info">
+                    <span class="label-micro">Localização:</span>
+                    <span class="data-text">C28210102.1002302.21002</span>
+                </div>
+                <div class="col-info">
+                    <div style="margin-bottom: 4px;"><span class="st-badge st-arquivado">ARQUIVADO</span></div>
+                    <span class="sub-text">Cliente: 27.202.820/0001-04</span>
+                </div>
+                <div class="count-pills">
+                    <span class="pill">Volume: 0</span>
+                    <span class="pill">Anexos: 0</span>
+                </div>
+            </div>
+
+            <div class="item-row" style="border-left: 4px solid #f39c12;">
+                <div class="col-info">
+                    <a href="#" class="doc-name">DC0014B62003324850S</a>
+                    <span class="sub-text">Mapa Documental: Sem Classificação</span>
+                </div>
+                <div class="col-info">
+                    <span class="label-micro">Localização:</span>
+                    <span class="data-text">C28210102.1002302.21002</span>
+                </div>
+                <div class="col-info">
+                    <div style="margin-bottom: 4px;"><span class="st-badge st-tratamento">EM TRATAMENTO</span></div>
+                    <span class="sub-text">Cliente: 27.202.820/0001-04</span>
+                </div>
+                <div class="count-pills">
+                    <span class="pill">Volume: 0</span>
+                    <span class="pill active">Anexos: 1</span>
+                </div>
+            </div>
+
+            <p class="footer-note">* Esta relação foi gerada automaticamente através do Identificador do Cliente: 27.202.820/0001-04</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
