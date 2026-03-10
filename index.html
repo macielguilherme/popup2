@@ -33,7 +33,7 @@
             border-radius: 3px 3px 0 0;
         }
 
-        .ui-dialog-title { font-weight: bold; font-size: 12px; }
+        .ui-dialog-title { font-weight: bold; font-size: 12px; color: #595959; }
         .ui-dialog-content { background-color: #fafafa; position: relative; min-height: 450px; border-radius: 0 0 3px 3px; }
 
         .listaConteudoDiv {
@@ -111,44 +111,45 @@
         .col-info { display: flex; flex-direction: column; gap: 4px; }
         .doc-name { color: #3672a0; font-weight: bold; text-decoration: none; font-size: 13px; }
         .sub-text { color: #888; font-size: 11px; }
-        .data-text { color: #555; font-size: 11px; line-height: 1.4; }
+        .data-text { color: #777; font-size: 11px; line-height: 1.4; }
 
-        /* Status como TEXTO SIMPLES (sem badge/caixa) */
+        /* Status como TEXTO SIMPLES (sem badge/caixa) - TODOS CINZA */
         .status-text {
             font-size: 11px;
-            color: #555;
+            color: #777;
             font-weight: normal;
         }
-        
-        .status-arquivado {
-            color: #777;
-        }
-        
-        .status-tratamento {
-            color: #d35400;
-            font-weight: 500;
-        }
 
-        /* Estilo para o texto simples da coluna Tipo de Relação */
+        /* Estilo para o texto simples da coluna Tipo de Relação - TODOS CINZA */
         .rel-text {
             font-size: 11px;
-            color: #555;
+            color: #777;
             font-weight: normal;
         }
 
-        .count-pills { text-align: right; display: flex; flex-direction: column; gap: 4px; align-items: flex-end; }
-        .pill {
-            background: #eef2f7;
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            color: #3672a0;
+        .count-pills { 
+            text-align: right; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 4px; 
+            align-items: flex-end; 
+        }
+        
+        /* Caixas de Volume e Anexos SEM COLORIDO - apenas texto */
+        .count-item {
             font-size: 10px;
+            color: #777;
+            font-weight: normal;
             min-width: 80px;
             text-align: center;
-            border: 1px solid #dce4ed;
         }
-        .pill.active { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
+
+        /* Texto do cliente - CINZA */
+        .cliente-text {
+            font-size: 11px;
+            color: #777;
+            word-break: break-all;
+        }
 
         .footer-note {
             margin-top: 25px;
@@ -157,13 +158,6 @@
             font-style: italic;
             border-top: 1px solid #eee;
             padding-top: 10px;
-        }
-
-        /* Ajuste para o texto do cliente */
-        .cliente-text {
-            font-size: 11px;
-            color: #555;
-            word-break: break-all;
         }
     </style>
 </head>
@@ -203,7 +197,7 @@
                 <span style="text-align: right;">Quantitativos</span>
             </div>
 
-            <!-- Primeiro item - Atualizado -->
+            <!-- Primeiro item - Volume -->
             <div class="item-row">
                 <div class="col-info">
                     <a href="#" class="doc-name">DC00304V00069174SOS</a>
@@ -216,62 +210,62 @@
                     <span class="data-text">C28210103.11102302.01111550</span>
                 </div>
                 <div class="col-info">
-                    <span class="status-text status-arquivado">ARQUIVADO</span>
+                    <span class="status-text">ARQUIVADO</span>
                 </div>
                 <div class="col-info">
                     <span class="cliente-text">27.202.820/0001-04</span>
                 </div>
                 <div class="count-pills">
-                    <span class="pill">Volume: 0</span>
-                    <span class="pill">Anexos: 0</span>
+                    <span class="count-item">Volume: 0</span>
+                    <span class="count-item">Anexos: 0</span>
                 </div>
             </div>
 
-            <!-- Segundo item - Atualizado -->
+            <!-- Segundo item - Anexo -->
             <div class="item-row">
                 <div class="col-info">
                     <a href="#" class="doc-name">DC003049000911460S</a>
                     <span class="sub-text">Etapa Documental: Sem Classificação</span>
                 </div>
                 <div class="col-info">
-                    <span class="rel-text">—</span>
+                    <span class="rel-text">Anexo</span>
                 </div>
                 <div class="col-info">
                     <span class="data-text">C28210102.1002302.21002</span>
                 </div>
                 <div class="col-info">
-                    <span class="status-text status-arquivado">ARQUIVADO</span>
+                    <span class="status-text">ARQUIVADO</span>
                 </div>
                 <div class="col-info">
                     <span class="cliente-text">27.202.820/0001-04</span>
                 </div>
                 <div class="count-pills">
-                    <span class="pill">Volume: 0</span>
-                    <span class="pill">Anexos: 0</span>
+                    <span class="count-item">Volume: 0</span>
+                    <span class="count-item">Anexos: 0</span>
                 </div>
             </div>
 
-            <!-- Terceiro item - Atualizado -->
-            <div class="item-row" style="border-left: 4px solid #f39c12;">
+            <!-- Terceiro item - Asterisco (*) -->
+            <div class="item-row">
                 <div class="col-info">
                     <a href="#" class="doc-name">DC003049000911470S</a>
                     <span class="sub-text">Etapa Documental: Sem Classificação</span>
                 </div>
                 <div class="col-info">
-                    <span class="rel-text">—</span>
+                    <span class="rel-text">*</span>
                 </div>
                 <div class="col-info">
                     <span class="data-text">C28210102.1002302.21002</span>
                 </div>
                 <div class="col-info">
-                    <span class="status-text status-tratamento">EM TRATAMENTO</span>
+                    <span class="status-text">EM TRATAMENTO</span>
                 </div>
                 <div class="col-info">
                     <span class="cliente-text">27.202.820/0001-04</span>
                 </div>
                 <div class="count-pills">
-                    <span class="pill">Volume: 0</span>
-                    <span class="pill active">Anexos: 1</span>
+                    <span class="count-item">Volume: 0</span>
+                    <span class="count-item">Anexos: 1</span>
                 </div>
             </div>
 
